@@ -1,33 +1,26 @@
-# v0.1.0 Release Summary
+# v0.1.1 Release Summary
 
 ## Quick Overview
-Phiên bản đầu tiên của Go Locales Service Provider với architecture modular, multiple loading strategies và performance optimization cho i18n applications.
+One-line summary of what this release brings.
 
 ## Key Highlights
-- 🎉 **Complete i18n Solution**: Manager interface với đầy đủ translation methods và loading strategies
-- 🚀 **Performance Optimized**: Thread-safe operations, localizer caching, và lazy loading
-- 🔧 **Developer Friendly**: Plugin architecture, comprehensive docs, extensive testing với 96.2% coverage
+- 🎉 **Major Feature**: Description of the most important feature
+- 🚀 **Performance**: Key performance improvements
+- 🔧 **Developer Experience**: Improvements for developers using this library
 
 ## Stats
-- **Features Implemented**: 15+ core features
-- **Loading Strategies**: 3 (File System, Embedded FS, Runtime Registration)
-- **Test Coverage**: 96.2%
-- **Documentation Files**: 5 comprehensive guides
-- **Dependencies**: 6 carefully selected packages
-- **Mock Implementations**: Complete testing support
+- **Issues Closed**: X
+- **Pull Requests Merged**: Y
+- **New Contributors**: Z
+- **Files Changed**: A
+- **Lines Added**: B
+- **Lines Removed**: C
 
 ## Impact
-Cung cấp foundation mạnh mẽ cho i18n trong Go applications với:
-- Clean API design tách biệt concerns
-- Multiple deployment options (standalone, embedded, plugin-based)
-- Enterprise-ready với thread safety và error handling
-- Extensible architecture cho microservices và plugin systems
+Brief description of how this release affects users and the ecosystem.
 
 ## Next Steps
-- Performance benchmarking và optimization
-- Additional file format support (TOML, etc.)
-- Hot-reload functionality cho development
-- Integration examples với popular frameworks
+What to expect in the next release cycle.
 
 ---
 **Full Release Notes**: [RELEASE_NOTES.md](./RELEASE_NOTES.md)  
