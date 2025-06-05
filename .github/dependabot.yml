@@ -1,0 +1,60 @@
+version: 2
+updates:
+  # Enable version updates for Go modules
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "go-fork/maintainers"
+    assignees:
+      - "go-fork/maintainers"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "go"
+    groups:
+      # Group go-fork internal dependencies together
+      go-fork:
+        patterns:
+          - "go.fork.vn/config"
+          - "go.fork.vn/di"
+          - "go.fork.vn/redis"
+    allow:
+      # Only allow updates for direct dependencies
+      - dependency-type: "direct"
+    ignore:
+      # Allow all updates for go-fork packages (our main dependencies)
+      # go.fork.vn/config and go.fork.vn/di will get all updates
+      
+      # Ignore major version updates for testing framework
+      - dependency-name: "github.com/stretchr/testify"
+        update-types: ["version-update:semver-major"]
+      
+      # Ignore all updates for indirect dependencies to reduce noise
+      - dependency-name: "*"
+        dependency-type: "indirect"
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "go-fork/maintainers"
+    assignees:
+      - "go-fork/maintainers"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "github-actions"

@@ -1,0 +1,44 @@
+# Cấu hình cho Service Provider Locales
+# Service này chỉ quản lý loader và truy xuất message
+# Việc xác định ngôn ngữ từ request thuộc về middleware
+
+locales:
+  # Ngôn ngữ mặc định để khởi tạo bundle i18n
+  default_locale: "en"
+  
+  # Thư mục chứa các tệp ngôn ngữ
+  locales_directory: "locales"
+  
+  # Danh sách các ngôn ngữ được hỗ trợ
+  supported_locales:
+    - "en"
+    - "vi"
+    - "fr"
+    - "es"
+    - "de"
+    - "it"
+    - "pt"
+    - "zh"
+    - "ja"
+    - "ru"
+    - "ko"
+  
+  # Cấu hình bundle cho các tệp ngôn ngữ
+  bundle: "message"
+  
+  # Đường dẫn trong EmbeddedFS nơi chứa file bản dịch (tùy chọn)
+  # Chỉ sử dụng khi load từ embedded filesystem
+  embedded_path: "locales"
+
+# Cấu hình middleware xử lý ngôn ngữ từ request (tham khảo)
+# Không thuộc về service provider locales
+http:
+  middleware:
+    i18n:
+      enabled: true
+      # Các cấu hình middleware sẽ được xử lý riêng:
+      # - accept_language: true
+      # - query_param: "lang" 
+      # - cookie: "lang"
+      # - cookie_max_age: 2592000 # 30 days
+

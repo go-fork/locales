@@ -1,0 +1,12 @@
+welcome:
+  one: "Chào mừng"
+  other: "Chào mừng"
+goodbye:
+  one: "Tạm biệt"
+  other: "Tạm biệt"
+hello_name:
+  one: "Xin chào {{.Name}}"
+  other: "Xin chào {{.Name}}"
+item_count:
+  one: "Bạn có {{.Count}} mục"
+  other: "Bạn có {{.Count}} mục"

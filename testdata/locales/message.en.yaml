@@ -1,0 +1,12 @@
+welcome:
+  one: "Welcome"
+  other: "Welcome"
+goodbye:
+  one: "Goodbye"
+  other: "Goodbye"
+hello_name:
+  one: "Hello {{.Name}}"
+  other: "Hello {{.Name}}"
+item_count:
+  one: "You have {{.Count}} item"
+  other: "You have {{.Count}} items"

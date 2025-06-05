@@ -1,0 +1,26 @@
+# Code Owners for go-fork/locales
+# These owners will be requested for review when anyone opens a pull request.
+
+# Global ownership
+* @go-fork/maintainers
+
+# Core library files
+*.go @go-fork/maintainers
+go.mod @go-fork/maintainers
+go.sum @go-fork/maintainers
+
+# Documentation
+*.md @go-fork/maintainers
+docs/ @go-fork/maintainers
+
+# CI/CD and automation
+.github/ @go-fork/maintainers
+scripts/ @go-fork/maintainers
+
+# Release management
+releases/ @go-fork/maintainers
+CHANGELOG.md @go-fork/maintainers
+
+# Security and licensing
+SECURITY.md @go-fork/maintainers
+LICENSE @go-fork/maintainers

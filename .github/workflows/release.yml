@@ -1,0 +1,66 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.23'
+
+    - name: Run tests
+      run: go test -v ./...
+
+    - name: Check release notes
+      id: check_notes
+      run: |
+        # Extract version from tag
+        VERSION=${GITHUB_REF#refs/tags/}
+        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+        
+        # Check if release notes file exists
+        RELEASE_NOTES_FILE="releases/${VERSION}/RELEASE_NOTES.md"
+        if [ -f "$RELEASE_NOTES_FILE" ]; then
+          echo "RELEASE_NOTES_FILE=$RELEASE_NOTES_FILE" >> $GITHUB_OUTPUT
+          echo "SHOULD_RELEASE=true" >> $GITHUB_OUTPUT
+          echo "✅ Found release notes: $RELEASE_NOTES_FILE"
+        else
+          echo "SHOULD_RELEASE=false" >> $GITHUB_OUTPUT
+          echo "❌ Release notes not found: $RELEASE_NOTES_FILE"
+          echo "::error::Release notes file not found. Please create $RELEASE_NOTES_FILE before creating a release."
+          exit 1
+        fi
+
+    - name: Create Release
+      if: steps.check_notes.outputs.SHOULD_RELEASE == 'true'
+      uses: softprops/action-gh-release@v1
+      with:
+        draft: false
+        prerelease: false
+        body_path: ${{ steps.check_notes.outputs.RELEASE_NOTES_FILE }}
+        generate_release_notes: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Update Go Package Registry
+      if: steps.check_notes.outputs.SHOULD_RELEASE == 'true'
+      run: |
+        # Trigger Go module proxy update
+        VERSION=${GITHUB_REF#refs/tags/}
+        curl -X POST "https://proxy.golang.org/go.fork.vn/locales/@v/${VERSION}.info" || true

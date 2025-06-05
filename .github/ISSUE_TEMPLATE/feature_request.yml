@@ -1,0 +1,107 @@
+name: Feature Request
+description: Suggest an idea for this project
+title: "[FEATURE] "
+labels: ["enhancement", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest a new feature! Please provide as much detail as possible.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Is your feature request related to a problem? Please describe the problem you're trying to solve.
+      placeholder: I'm always frustrated when...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like to see implemented.
+      placeholder: I would like to see...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Describe any alternative solutions or features you've considered.
+      placeholder: I've considered...
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Describe the specific use case or scenario where this feature would be helpful.
+      placeholder: This feature would be useful when...
+    validations:
+      required: true
+
+  - type: textarea
+    id: api-design
+    attributes:
+      label: API Design (Optional)
+      description: If you have ideas about how the API should look, please share them here.
+      render: go
+      placeholder: |
+        // Example API design
+        cfg.NewFeature().
+            WithOption("value").
+            Build()
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Low (nice to have)
+        - Medium (would be helpful)
+        - High (need for project)
+        - Critical (blocking my work)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Estimated Complexity
+      description: How complex do you think this feature would be to implement?
+      options:
+        - Low (small change)
+        - Medium (moderate effort)
+        - High (significant work)
+        - Don't know
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Are you willing to contribute to the implementation?
+      options:
+        - label: I would be willing to submit a PR for this feature
+        - label: I would be willing to help with testing
+        - label: I would be willing to help with documentation
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, screenshots, or examples about the feature request here.
+      placeholder: Any additional information...
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/go-fork/locales/blob/main/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
